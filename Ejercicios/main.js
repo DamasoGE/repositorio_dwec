@@ -6,5 +6,5 @@ import{} from './helpers/ejercicios1.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     saludar();
-    console.log(saludar2("Damaso2dfgdfg"));
+    console.log(saludar2("Damaso3"));
 })
