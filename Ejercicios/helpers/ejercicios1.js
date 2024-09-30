@@ -36,7 +36,7 @@ const filtrarpares = (arr) => arr.filter((num) => num % 2 == 0);
  * @description: une una cantidad variable de arrays y los combina en uno solo
  */
 const unirArrays = (...arr) => arr.flat();
-console.log(unirArrays(['ene','feb','mar'],['lun','mar','mie']))
+//console.log(unirArrays(['ene','feb','mar'],['lun','mar','mie']))
 
 // Ejercicio 5: Conteo de Palabras
 // Define una función llamada `contarPalabras` que tome una cadena de texto `texto` y devuelva un objeto que cuente cuántas veces aparece cada palabra en el texto.
@@ -108,16 +108,32 @@ const dividirFragmento = (arr, tam) => [...arr].map((elem,i) => (i % tam == 0 ? 
 // Define una función llamada mapearNumeros que toma dos argumentos: un array arr y una
 // función funcion . La función debe aplicar la función proporcionada a cada elemento del array y
 // devolver un nuevo array con los resultados de la función aplicada a cada elemento.
+/**
+ * @description: aplica a un array de números una función
+ */
+const mapearNumeros = (arr,funct) => {
+    return funct([...arr]);
+};
+//console.log(mapearNumeros([1,2,3,4,5],(arr) => arr.length))
 
 // Ejercicio 12: Combinar Objetos
 // Escribe una función llamada combinarObjetos que tome dos objetos (tanto arrays como
 // objetos) obj1 y obj2 . La función debe combinar ambos objetos en uno solo y devolverlo.
+/**
+ * @description: coge dos objetos y los combina en uno solo, se hay claves repetidas, se queda con el valor del segundo objeto
+ */
+const combinarObjetos = (obj1,obj2) => Object.assign({},obj1,obj2);
+console.log(combinarObjetos({ a: 1, b: 2 }, { b: 1, c: 2 }));
 
 // Ejercicio 13: Extraer Propiedades
 // Define una función llamada extraerPropiedades que tome un objeto obj y un array de
 // propiedades . La función debe devolver un nuevo objeto que contenga solo las propiedades
 // especificadas en el array. Si una propiedad no existe en el objeto original, debe ser omitida en
 // el nuevo objeto.
+/**
+ * @description: a un objeto le pasa las propiedades recogidas en un array para devolver un objeto solo con las propiedades del array.
+ */
+const extraerPropiedades = () => {};
 
 // Ejercicio 14: Rango de Números
 // Escribe una función llamada rangoNumeros que tome dos números inicio y fin . La
