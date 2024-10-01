@@ -195,12 +195,82 @@ const numeros = [2,5,8,1,3,0,7,4,9];
 /**
  * @description: usando reduce obten el máximo
  */
+const maximo2 = (arrayNum) => arrayNum.reduce((acc, num) => acc = num>acc ? num:acc ,arrayNum[0]);
+
+/**
+ * @description: dado un array de numero, eliminar los duplicados usando reduce
+ */
+const delnum = (arrayNum) => arrayNum.reduce((acc, num) =>{
+    arrayNum.filter((num) => {
+        // POR HACER
+    })
+}, [ ]);
+
+//console.log(delnum(numeros));
+
+
+
+/**
+ * @description: usando reduce obten el máximo
+ */
 const maximo = (arrayNum) => 
  arrayNum.reduce((acc, num) => 
         acc = num>acc ? num:acc
     ,arrayNum[0]);
 
-console.log(maximo(numeros));
+//console.log(maximo(numeros));
 
 // transacciones[0]?.propiedad (Sirve para comprobar si esa clave existe)
 // if(transacciones[0]?.propiedad) SENTENCIA
+
+//Crear una funcion llamada eleccionDelegado que le pase obligatoriamente como primer paramatro un array,
+//como segundo parametro un numero(numeros de alumnos) y 
+//automaticamente me generara un numero aleatorio entre 1 y el numero pasado como paraemtro,ambos incluidos, 
+//devolviendome el elemento del array del numero aleatorio-1.
+/**
+ * @description: eleccion de delegado pasando un array de alumnos y un número
+ */
+const eleccionDelegado = (arr,num) => {
+    let isStringArr = arr.every((elem) => typeof(elem) == "string" );
+    console.log(isStringArr);
+    if(isStringArr && typeof(num) == "number" && num == arr.length ){
+        return arr[Math.floor(Math.random()*num)];
+    }else return "ERROR: Entradas incorrectas"
+};
+//console.log(eleccionDelegado(["juan","isabel","pedro"], 3))
+
+// 1. Dado un array de palabras, cuantas vocales hay en total
+// 2. '', decidme la palabra con mayor longitud
+// 3. '', eliminar las palabras duplicdas
+// 4. '', crear un objeto cuya clave sea la palabra y cuyo valor sea el numero de veces que aparece la palabra
+
+/**
+ * @description: cuantas vocales hay en total
+ */
+const contarVocales = (arr) => arr.reduce((acc,b) => acc+=b.match(/[aeiouAEIOU]/g).length,0);
+//console.log(contarVocales(["perro","vaca","pez"]))
+
+/**
+ * @description: decidme la palabra con mayor longitud
+ */
+const palabraMasLarga = (arr) => arr.reduce((a,b) => a.length-b.length>0 ? a:b,"");
+//console.log(palabraMasLarga(["perro","vaca","pez"]))
+
+/**
+ * @description: eliminar las palabras duplicadas
+ */
+const elimPalDup = (arr) =>  arr.filter((elem, index) => arr.indexOf(elem) == index);
+//console.log(elimPalDup(["copia2","ene","feb", "copia", "copia","mar", "copia2"]))
+
+/**
+ * @description: crear objeto con las palabras y las veces que aparecen en un texto
+ */
+const contarObjetoPalabras = (texto) =>{
+    let arr = texto.toLowerCase().split(" ");
+    let unico = arr.filter((palabra, index) => arr.indexOf(palabra) == index);
+    const objeto = {};
+    unico.forEach((palabra) => objeto[palabra]=0);
+    arr.forEach((palabra) => objeto[palabra]++);
+    return objeto;
+};
+console.log(contarObjetoPalabras("Tres tristes tigres comian tristes el trigo en el tres trigales con tres tigres"))
