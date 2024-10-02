@@ -123,7 +123,7 @@ const mapearNumeros = (arr,funct) => {
  * @description: coge dos objetos y los combina en uno solo, se hay claves repetidas, se queda con el valor del segundo objeto
  */
 const combinarObjetos = (obj1,obj2) => Object.assign({},obj1,obj2);
-console.log(combinarObjetos({ a: 1, b: 2 }, { b: 1, c: 2 }));
+//console.log(combinarObjetos({ a: 1, b: 2 }, { b: 1, c: 2 }));
 
 // Ejercicio 13: Extraer Propiedades
 // Define una función llamada extraerPropiedades que tome un objeto obj y un array de
@@ -133,26 +133,57 @@ console.log(combinarObjetos({ a: 1, b: 2 }, { b: 1, c: 2 }));
 /**
  * @description: a un objeto le pasa las propiedades recogidas en un array para devolver un objeto solo con las propiedades del array.
  */
-const extraerPropiedades = () => {};
+const extraerPropiedades = (obj, arr) => {
+    const obj2= {}
+    arr.forEach((elem)=>{
+        if( obj[elem]!=0) obj2[elem]=obj[elem]
+    })
+    return obj2;
+};
+//console.log(extraerPropiedades({ a: 1, b: 2 , perro: "bolita"},["a","perro"]));
 
 // Ejercicio 14: Rango de Números
 // Escribe una función llamada rangoNumeros que tome dos números inicio y fin . La
 // función debe devolver un array que contenga todos los números en el rango desde inicio
 // hasta fin , incluyendo ambos números.
+/**
+ * @description: da dos numeros y devuelve un array con todos los numeros entre inicio y fin
+ */
+const rangoNumeros = (num1,num2) => {
+    let rango= new Array()
+    for(let i=num1; i<=num2; i++) rango[i-num1]=i;
+    return rango;
+}
+//console.log(rangoNumeros(5,15));
 
 // Ejercicio 15: Invertir Cadena
 // Define una función llamada invertirCadena que tome una cadena cadena y devuelva una
 // nueva cadena con los caracteres en orden inverso.
+const invertirCadena = (cadena) =>  cadena.split("").reverse().join("");
+//console.log(invertirCadena("holacomoestas"));
 
 // Ejercicio 16: Capitalizar Palabras
 // Crea una función llamada capitalizarPalabras que tome una cadena cadena y devuelva
 // una nueva cadena en la que la primera letra de cada palabra esté en mayúscula y las demás
 // en minúscula.
+/**
+ * @description: coge una frase y sale con la primera con mayuscula y el resto minuscula
+ * @param {*} cadena 
+ * @returns 
+ */
+const capitalizarfrase = (cadena) => [...cadena].map((elem, index)=> index==0 ? elem.toUpperCase():elem.toLowerCase()).join("");
+//console.log(capitalizarfrase("hKJ lJkj kJKKLjjjkjK"))
 
 // Ejercicio 17: Multiplicar Matriz por Escalar
 // Escribe una función llamada multiplicarMatrizPorEscalar que tome una matriz matriz y
 // un número escalar . La función debe multiplicar cada elemento de la matriz por el escalar y
 // devolver una nueva matriz con los resultados.
+/**
+ * @description: multiplicar matriz por escalar
+ */
+const prodMatriz = (matriz) => matriz.map((fila)=>fila.map((columna) => columna*=2));
+//console.log(prodMatriz([[1,2,3],[4,5,6],[7,8,9]]))
+
 
 // Ejercicio 18: Combinación de Arrays
 // Escribe una función llamada combinarArrays que pase como parámetro "creciente" o
@@ -160,16 +191,43 @@ const extraerPropiedades = () => {};
 // Seguidamente me devolverá un array con todos los elementos que conformen los arrays
 // ordenado creciente u ordenado decreciente según indique en el parámetro. Si no indico nada
 // se hará de forma creciente.
+/**
+ * @description:coge arrays de numeros y los ordena por parametro "creciente" y "decreciente"
+ */
+const combinarArray = (texto, ...arr) => {
+    let array = [...arr].join().split(",");
+    if(texto == "creciente"){
+        array.sort((a,b)=>a-b);
+    }else if(texto == "decreciente"){
+        array.sort((a,b)=>b-a);
+    }
+    return array;
+}
+//console.log(combinarArray("decreciente",[6,4,9],[2,0,12],[45,9,-2]));
 
 // Ejercicio 19: Palíndromo
 // Escribe una función llamada esPalindromo que verifique si una palabra es un palíndromo, es
 // decir, se lee igual de izquierda a derecha y de derecha a izquierda. La función debe devolver
 // true si la palabra es un palíndromo y false en caso contrario.
+/**
+ * @description: decir si una palabra es palíndromo
+ */
+const palindromo = (cadena) => {
+    let invcadena= cadena.split("").reverse().join("");
+    return cadena == invcadena ? true:false;
+}
+//console.log(palindromo("holaloh"))
 
 // Ejercicio 20: Diferencia de Arrays
 // Escribe una función llamada diferenciaArrays que encuentre la diferencia entre dos arrays,
 // es decir, los elementos que están en uno pero no en el otro. La función debe devolver un nuevo
 // array con los elementos diferentes.
+/**
+ *@description: obtener los elementos diferentes entre dos arrays
+ */
+const diferenciaArrays = () => {
+    
+}
 
 // Ejercicio 21: Rotación de Arrays
 // Escribe una función llamada rotarArray que rote los elementos de un array hacia la derecha
