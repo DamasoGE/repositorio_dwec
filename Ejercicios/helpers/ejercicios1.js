@@ -225,32 +225,73 @@ const palindromo = (cadena) => {
 /**
  *@description: obtener los elementos diferentes entre dos arrays
  */
-const diferenciaArrays = () => {
-    
+const diferenciaArrays = (arr1,arr2) => {
+    const darr = new Array();
+    arr1.forEach((elem) => arr2.includes(elem) ? null:darr.push(elem));
+    arr2.forEach((elem) => arr1.includes(elem) ? null:darr.push(elem));
+    return darr;
 }
+//console.log(diferenciaArrays(["perro","gato","pez"],["gato","toro","pez","pajaro"]))
 
 // Ejercicio 21: Rotación de Arrays
 // Escribe una función llamada rotarArray que rote los elementos de un array hacia la derecha
 // o izquierda. La función debe tomar un array arr y un número entero pasos que indique
 // cuántos pasos se deben realizar hacia la derecha (si es positivo) o hacia la izquierda (si es
 // negativo).
+/**
+ * @description: rota un array las posiciones pasadas por numero
+ */
+const rotarArray = (arr, num) => {
+    
+}
 
 // Ejercicio 22: Suma de Matrices
 // Escribe una función llamada sumarMatrices que sume dos matrices (arrays bidimensionales)
 // y devuelva el resultado. Las matrices de entrada estarán representadas como arrays de arrays
 // con la misma cantidad de filas y columnas.
+/**
+ * @description: suma de matrices de mismo tamaño.
+ */
+const sumarMatrices = (matrix1, matrix2) => matrix1.map((fila,i) => fila.map((columna,j)=> columna+matrix2[i][j]));
+//console.log(sumarMatrices([[1, 2],[3, 4]],[[5, 6],[7, 8]]))
 
 // Ejercicio 23: Promedio de Filas
 // Escribe una función llamada promedioFilas que calcule el promedio de cada fila en una
 // matriz (array bidimensional) y devuelva un array con los resultados.
+/**
+ * @description: calcula el promedio de cada fila de una matriz
+ */
+const promedioFilas = (matrix) => {
+    const promedio = new Array()
+    matrix.map((fila) =>{
+        promedio.push(fila.reduce((a,b)=> a+b,0)/fila.length)
+    })
+    return promedio;
+}
+//console.log(promedioFilas([[6,4,9],[2,0,12]]))
 
 // Ejercicio 24: Ordenar Objetos
 // Escribe una función llamada ordenarPorPropiedad que ordene un array de objetos por una
 // propiedad específica. La función debe tomar un array arr y una cadena propiedad que
 // indique la propiedad por la cual se debe ordenar.
+/**
+ * @description: ordena objetos por la propiedad del array que se pasa como parametro
+ */
+const ordenarPorPropiedad = (arr,prop) => {
+    return arr.sort((a,b)=>a[prop]>b[prop])  //No se que pasa????????
+}
+console.log(ordenarPorPropiedad([{ nombre: 'Carlos', edad: 25 },{ nombre: 'Ana', edad: 30 },
+    { nombre: 'Luis', edad: 20 }], "edad"));
 
 // Ejercicio 25: Números que faltan
 // Escribe una función llamada numerosFaltantes que encuentre los números faltantes en un
 // rango dado dentro de un array. La función debe tomar un array de números arr y dos
 // números enteros inicio y fin que representan el rango. La función debe devolver un array
 // con los números que faltan en ese rango.
+/**
+ * @description
+ */
+const numerosFaltantes = (arr) => {
+
+}
+console.log(numerosFaltantes([1,5,8,15,17,20,24,30]))

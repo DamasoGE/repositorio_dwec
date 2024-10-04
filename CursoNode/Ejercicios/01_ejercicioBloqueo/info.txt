@@ -1,0 +1,1 @@
+Ejemplo de ejecución síncrona y asíncrona

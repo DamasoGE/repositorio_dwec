@@ -273,4 +273,4 @@ const contarObjetoPalabras = (texto) =>{
     arr.forEach((palabra) => objeto[palabra]++);
     return objeto;
 };
-console.log(contarObjetoPalabras("Tres tristes tigres comian tristes el trigo en el tres trigales con tres tigres"))
+//console.log(contarObjetoPalabras("Tres tristes tigres comian tristes el trigo en el tres trigales con tres tigres"))
