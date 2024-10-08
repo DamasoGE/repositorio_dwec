@@ -280,8 +280,8 @@ const promedioFilas = (matrix) => {
 const ordenarPorPropiedad = (arr,prop) => {
     return arr.sort((a,b)=>a[prop]>b[prop])  //No se que pasa????????
 }
-console.log(ordenarPorPropiedad([{ nombre: 'Carlos', edad: 25 },{ nombre: 'Ana', edad: 30 },
-    { nombre: 'Luis', edad: 20 }], "edad"));
+//console.log(ordenarPorPropiedad([{ nombre: 'Carlos', edad: 25 },{ nombre: 'Ana', edad: 30 },
+//    { nombre: 'Luis', edad: 20 }], "edad"));
 
 // Ejercicio 25: Números que faltan
 // Escribe una función llamada numerosFaltantes que encuentre los números faltantes en un
@@ -294,4 +294,4 @@ console.log(ordenarPorPropiedad([{ nombre: 'Carlos', edad: 25 },{ nombre: 'Ana',
 const numerosFaltantes = (arr) => {
 
 }
-console.log(numerosFaltantes([1,5,8,15,17,20,24,30]))
+//console.log(numerosFaltantes([1,5,8,15,17,20,24,30]))
