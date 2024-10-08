@@ -23,7 +23,7 @@ export const dec1 = (arrayObj) =>{
  export const buscarPorCiudad = (arrayObj,ciudad) => {
     console.log("En la ciudad "+ ciudad + "están: ")
     arrayObj.filter((elem)=> elem.address.city==ciudad).forEach((elem)=> {
-            const { name, email, address: {geo: {lat}}, address: {geo: {lng}}  } = elem
+            const { name, email, address: {geo: {lat,lng}}  } = elem
             console.log(
                 `nombre: ${name}
                 email: ${email}
