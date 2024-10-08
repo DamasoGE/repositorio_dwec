@@ -1,0 +1,8 @@
+Información del sistema operativo:
+        - Nombre del SO: Windows_NT
+        - Versión del SO: 10.0.22631
+        - Plataforma: win32
+        - Memoria libre: 20051.81 MB
+        - Memoria total: 32394.77 MB
+        - Arquitectura: x64
+        
