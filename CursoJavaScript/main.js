@@ -3,12 +3,13 @@ import {saludar, saludar2, evaluar} from './helpers/script.js';
 import{} from './helpers/ejercicios1.js'
 import{ dec1, buscarPorCiudad } from './helpers/deconstruccion.js'
 import{ users } from './data/usuarios.js'
+import { almacenarlocalstorage } from './helpers/localstore.js'
 
 // ---------------Inicio de la Aplicación---------------//
 
-document.addEventListener('DOMContentLoaded', () => {
-    saludar();
-    console.log(saludar2("Damaso3"));
-})
+const usuarios = [
+    {nombre:"Damaso", id:33},
+    {nombre:"Pedro", id:66}
+]
 
-console.log(buscarPorCiudad(users,"McKenziehaven"));
+console.log(almacenarlocalstorage(usuarios,"usuarios"));
