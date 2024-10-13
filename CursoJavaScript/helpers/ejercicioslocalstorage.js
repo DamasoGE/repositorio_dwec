@@ -105,7 +105,8 @@ export const ejer5 = (key) => {
 
     data.forEach((elem) => {
         let item = document.createElement('li');
-        item.textContent = `Nombre: ${elem.nombre}, Edad: ${elem.edad}`;
+        const { nombre, edad } = elem;
+        item.textContent = `Nombre: ${nombre}, Edad: ${edad}`;
         lista.appendChild(item);
     })
 
@@ -151,8 +152,27 @@ export const ejer7 = (mapObj) => {
 /**
  * @description
  */
-export const ejer8 = () => {
+export const ejer8 = (key) => {
+    if(typeof key  !== "string" || !localStorage.hasOwnProperty(key))
+        throw new Error("El argumento no es válido");
 
+    const data = JSON.parse(localStorage.getItem(key));
+
+    let div = Object.assign(document.createElement('div'),{id: 'app'})
+    // let div = document.createElement('div')
+    // div.id='app';
+    document.body.appendChild(div);
+
+    let lista = document.createElement('ul')
+
+    data.forEach((elem) => {
+        let item = document.createElement('li');
+        const { nombre } = elem
+        item.textContent = `Nombre: ${nombre}`;
+        lista.appendChild(item);
+    })
+
+    div.appendChild(lista);
 }
 
 // 9. Validación de Datos con Operadores Ternarios: Crea una función que
@@ -160,8 +180,49 @@ export const ejer8 = () => {
 // algún objeto tiene un nombre vacío o una edad menor a 18, no lo
 // almacena en LocalStorage y devuelve un mensaje indicando qué
 // objetos son inválidos.
+/**
+ * @description
+ */
+export const ejer9 = (key, arrObj) => {
+    if(!Array.isArray(arrObj) || typeof key  !== "string" || !localStorage.hasOwnProperty(key))
+        throw new Error("El argumento no es válido");
+
+    const data = JSON.parse(localStorage.getItem(key));
+
+    const arr = new Array();
+    arrObj.forEach((elem) => { elem.nombre!=null && elem.nombre!="" && elem.edad>=18 ? arr.push(elem):console.log(`El elemento {nombre:${elem.nombre}, edad:${elem.edad}} es inválido`)})
+    arr.forEach((elem)=>data.push(elem))
+
+    localStorage.setItem(key, JSON.stringify(data))
+}
 
 // 10. Actualización Condicional en LocalStorage con Funciones: Crea una
 // función que acepte un array de objetos y almacene solo aquellos objetos
 // cuyo nombre no esté ya almacenado en LocalStorage . Usa una función
 // para verificar la existencia y almacenar los nuevos objetos.
+/**
+ * @description
+ */
+export const ejer10 = (key, arrObj) => {
+    if(!Array.isArray(arrObj) || typeof key  !== "string" || !localStorage.hasOwnProperty(key))
+        throw new Error("El argumento no es válido");
+    
+    const data = JSON.parse(localStorage.getItem(key));
+
+    const arr = new Array();
+
+    arrObj.forEach((elem) => { 
+        let unico = true;
+
+        data.forEach((dataelem) =>{
+            if(elem.nombre==dataelem.nombre) unico = false;
+        })
+
+        if(unico==true) data.push(elem);
+
+        localStorage.setItem(key, JSON.stringify(data));
+    })
+   
+
+
+}
