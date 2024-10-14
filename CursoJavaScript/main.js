@@ -1,6 +1,7 @@
 //Import nombrado
 import {saludar, saludar2, evaluar} from './helpers/script.js';
 import{} from './helpers/ejercicios1.js'
+import{} from './helpers/basicos.js'
 import{ dec1, buscarPorCiudad } from './helpers/deconstruccion.js'
 import{ users } from './data/usuarios.js'
 import { almacenarlocalstorage } from './helpers/localstore.js'
