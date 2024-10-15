@@ -1,6 +1,6 @@
 // Realizar una descarga de la data de los users que está en mi Web y mostrarla en consola.
-import { loginUsers, users } from "./src/data/data"
-import { obtenerUsuarios, login } from "./src/helpers/script"
+import { loginUsers, users } from "./data/data"
+import { obtenerUsuarios, login } from "./helpers/script"
 
 obtenerUsuarios(users)
   .then(users => {

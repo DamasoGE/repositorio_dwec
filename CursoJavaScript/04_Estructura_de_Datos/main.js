@@ -1,11 +1,11 @@
 //Import nombrado
-import {saludar, saludar2, evaluar} from './helpers/script.js';
-import{} from './helpers/ejercicios1.js'
-import{} from './helpers/basicos.js'
+import {saludar, saludar2, evaluar} from './helpers/basicos.js';
+import{} from './helpers/relacion_arrays_1_2.js'
+import{} from './helpers/relacion_basicos.js'
 import{ dec1, buscarPorCiudad } from './helpers/deconstruccion.js'
 import{ users } from './data/usuarios.js'
 import { almacenarlocalstorage } from './helpers/localstore.js'
-import { ejer1, ejer2, ejer3, ejer4, ejer5, ejer6, ejer7, ejer8, ejer9, ejer10 } from './helpers/ejercicioslocalstorage.js'
+import { ejer1, ejer2, ejer3, ejer4, ejer5, ejer6, ejer7, ejer8, ejer9, ejer10 } from './helpers/relacion_localstorage.js'
 
 // ---------------Inicio de la Aplicación---------------//
 
