@@ -128,9 +128,12 @@ const bas13 = (obj,key) => obj.hasOwnProperty(key)
 // Dado un objeto que representa un pedido, convierte todas sus claves a mayúsculas utilizando
 // Object.keys y reduce.
 // const pedido = { producto: "Silla", cantidad: 4, precio: 50 };
-const bas14 = (obj) => Object.keys(obj).reduce((newObj,key) => { // npi?????????????????????????????????????????????
-        newObj[key.toUpperCase()]=obj[key]}, {});
-
+const bas14 = (obj) => {
+        return Object.keys(obj).reduce((acc,key) => { 
+            acc[key.toUpperCase()]=obj[key];
+            return acc;
+        }, {});
+}
 //console.log(bas14({ producto: "Silla", cantidad: 4, precio: 50 }))
 
 // Ejercicio 15:
@@ -142,7 +145,16 @@ const bas14 = (obj) => Object.keys(obj).reduce((newObj,key) => { // npi?????????
 // { nombre: "Luis", calificacion: 88 },
 // { nombre: "María", calificacion: 70 },
 // ];
-
+/**
+ * @description
+ */
+const bas15 = (arrObj) => arrObj.filter((elem) => elem.calificacion>=85).map((elem)=> elem.nombre)
+// console.log(bas15([
+//     { nombre: "Carlos", calificacion: 80 },
+//     { nombre: "Ana", calificacion: 90 },
+//     { nombre: "Luis", calificacion: 88 },
+//     { nombre: "María", calificacion: 70 },
+//     ]))
 
 
 // Ejercicio 16:
@@ -153,12 +165,32 @@ const bas14 = (obj) => Object.keys(obj).reduce((newObj,key) => { // npi?????????
 // { nombre: "Mouse", precio: 15, cantidad: 3 },
 // { nombre: "Monitor", precio: 200, cantidad: 1 },
 // ];
+/**
+ * @description
+ */
+const bas16 = (arrObj) => arrObj.reduce((acc,elem) => acc+elem.precio*elem.cantidad ,0);
+
+// console.log(bas16([{ nombre: "Teclado", precio: 25, cantidad: 2 },
+//     { nombre: "Mouse", precio: 15, cantidad: 3 },
+//     { nombre: "Monitor", precio: 200, cantidad: 1 }]))
 
 // Ejercicio 17:
 // Dado un array de números y un objeto que clasifique esos números en pares e impares, usa forEach
 // para llenar el objeto con los números correspondientes. Métodos sugeridos: forEach
 // const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 // const clasificacion = { pares: [], impares: [] };
+/**
+ * @description
+ */
+const bas17 = (arrNum) => {
+    const clasificacion = { pares: [], impares: []}
+
+    arrNum.forEach((elem) => {
+        elem % 2 == 0 ? clasificacion.pares.push(elem):clasificacion.impares.push(elem);
+    })
+    return clasificacion;
+}
+//console.log(bas17([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 // Ejercicio 18:
 // Dado un objeto de empleados con sus salarios, usa Object.entries y reduce para calcular el salario
@@ -169,13 +201,24 @@ const bas14 = (obj) => Object.keys(obj).reduce((newObj,key) => { // npi?????????
 // Pedro: 1500,
 // Ana: 1100,
 // };
+/**
+ * @description
+ */
+const bas18 = (obj) => Object.entries(obj).reduce((acc, elem) => acc + elem[1],0)/Object.keys(obj).length;
+//console.log(bas18({ Juan: 1000, Maria: 1200, Pedro: 1500, Ana: 1100}))
 
 // Ejercicio 19:
 // Dado un array de strings, usa reduce y split para contar cuántas veces aparece una letra específica en
 // todas los strings. Métodos sugeridos: reduce, split
 // const palabras = ["hola", "mundo", "javascript", "es", "genial"];
 // const letraABuscar = "a";
-
+/**
+ * @description
+ */
+const bas19 = (arr, letra) => {
+    return arr.reduce((acc,palabra) => acc+palabra, "").split("").reduce((acc, letra) => letra=='a' ? acc+1: acc+0 , 0)
+}
+// console.log(bas19(["hola", "mundo", "javascript", "es", "genial"]))
 
 // Ejercicio 20:
 // Dado un array de objetos que representan compras con propiedades fecha y monto, usa sort para
@@ -185,6 +228,15 @@ const bas14 = (obj) => Object.keys(obj).reduce((newObj,key) => { // npi?????????
 // { fecha: new Date(2022, 1, 13), monto: 300 },
 // { fecha: new Date(2023, 5, 10), monto: 150 },
 // ];
+/**
+ * @description
+ */
+const bas20 = (arrObj) => arrObj.sort((a,b) => a.fecha -b.fecha)
+// console.log(bas20([
+//     { fecha: new Date(2023, 9, 21), monto: 200 },
+//     { fecha: new Date(2022, 1, 13), monto: 300 },
+//     { fecha: new Date(2023, 5, 10), monto: 150 },
+//     ]))
 
 // Ejercicio 21:
 // Dado un array de objetos que representan tareas con una propiedad completada, usa some y every
@@ -195,6 +247,19 @@ const bas14 = (obj) => Object.keys(obj).reduce((newObj,key) => { // npi?????????
 // { tarea: "Sacar la basura", completada: false },
 // { tarea: "Comprar comida", completada: true },
 // ];
+/**
+ * @description
+ */
+const bas21 = (arrObj) => {
+    let tareaincompleta = arrObj.some((elem) => elem.completada==false)
+    let todascompletas = arrObj.every((elem) => elem.completada==true)
+    return console.log(`Tarea incompleta: ${tareaincompleta}; Tareas completas: ${todascompletas}`)
+}
+// console.log(bas21([
+//     { tarea: "Lavar los platos", completada: true },
+//     { tarea: "Sacar la basura", completada: false },
+//     { tarea: "Comprar comida", completada: true },
+//     ]))
 
 // Ejercicio 22:
 // Dado un array de objetos con propiedades nombre y puntuacion, usa reduce para encontrar el objeto
@@ -204,24 +269,56 @@ const bas14 = (obj) => Object.keys(obj).reduce((newObj,key) => { // npi?????????
 // { nombre: "Ana", puntuacion: 180 },
 // { nombre: "Luis", puntuacion: 150 },
 // ];
+/**
+ * @description
+ */
+const bas22= (arrObj) => {
+    return arrObj.reduce((acc, elem) => acc>elem.puntuacion? acc: elem.puntuacion,0)
+}
+// console.log(bas22([
+//     { nombre: "Carlos", puntuacion: 120 },
+//     { nombre: "Ana", puntuacion: 180 },
+//     { nombre: "Luis", puntuacion: 150 },
+//     ]))
 
 // Ejercicio 23:
 // Dado un objeto que contiene arrays como valores, usa Object.values y flat para obtener todos los
 // elementos de esos arrays en un solo array. Métodos sugeridos: Object.values, flat
-// const categorias = {
-// frutas: ["manzana", "plátano", "pera"],
-// verduras: ["lechuga", "tomate"],
-// carnes: ["pollo", "cerdo"],
-// };
+const categorias = {
+frutas: ["manzana", "plátano", "pera"],
+verduras: ["lechuga", "tomate"],
+carnes: ["pollo", "cerdo"],
+};
+/**
+ * @author: Francisco Dámaso Giménez Escudero
+ * @description: Obtener todos los valores de los arrays de los que está formado un objeto
+ * @param {Object}
+ * @returns {Object}
+ */
+const bas23 = (obj) => Object.values(obj).flat();
+// console.log(bas23({
+//     frutas: ["manzana", "plátano", "pera"],
+//     verduras: ["lechuga", "tomate"],
+//     carnes: ["pollo", "cerdo"],
+//     }))
 
 // Ejercicio 24:
 // Dado un array de objetos con propiedades nombre y edad, usa filter, map y reduce para obtener la
 // suma de las edades de las personas cuyo nombre empieza con una vocal. Métodos sugeridos: filter,
 // map, reduce
-
 // const personas = [
 // { nombre: "Oscar", edad: 25 },
 // { nombre: "Ana", edad: 30 },
 // { nombre: "Luis", edad: 28 },
 // { nombre: "Elena", edad: 22 },
 // ];
+/**
+ * @description
+ */
+const bas24 = (arrObj) => arrObj.filter((elem)=> /[aeiouAEIOU]/.test(elem.nombre[0])).reduce((acc, obj) => acc+obj.edad,0)
+// console.log(bas24([
+//     { nombre: "Oscar", edad: 25 },
+//     { nombre: "Ana", edad: 30 },
+//     { nombre: "Luis", edad: 28 },
+//     { nombre: "Elena", edad: 22 },
+//     ]))

@@ -40,9 +40,5 @@ export const modifyLocal = (keyFind, userName, newId) => {
     if(typeof key  !== "string" || typeof userName  !== "string" || typeof newId !== "string" || !localStorage.hasOwnProperty(key)){
         throw new Error("Los argumentos no son válidos")
     }
-
     const miData = JSON.parse(localStorage.getItem(keyFind));
-    
-
-
 }
