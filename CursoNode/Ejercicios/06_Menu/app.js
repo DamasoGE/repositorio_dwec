@@ -32,7 +32,6 @@ function addUser(username){
 function loadDataJSON(path){
     try{
         const data = fs.readFile(path,'utf8');
-   
     }catch(error){
         console.error("Error al leer el fichero de usuarios", error);
     }
