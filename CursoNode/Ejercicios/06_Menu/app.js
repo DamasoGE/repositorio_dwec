@@ -25,7 +25,7 @@ const info = null;
 
 function addUser(username,edad){
         const arr = loadDataJSON(pathUserData);
-        console.log(arr.push({nombre: username, edad: edad}));
+        arr.push({nombre: username, edad: edad});
         saveDataJSON(arr, pathUserData);
 }
 
@@ -53,14 +53,29 @@ function saveDataJSON(arr, path){
     }
 }
 
-function listUsers(){}
+function listUsers(path){
+    const arr = loadDataJSON(pathUserData);
+    arr.forEach( ({ nombre, edad }) => {
+        console.log(`Usuario: ${nombre}, Edad: ${edad}`);
+    });
+}
 
-function deleteUser(){}
+function deleteUser(username, path){
+    const arr = loadDataJSON(path);
+    let index = arr.findIndex((elem) =>{
+        return elem.nombre==username
+    })
+    arr.splice(index, 1);
+    saveDataJSON(arr, path);
+}
 
 function menu(info){
     do{
         console.clear();
-        info!=null ? console.log(info.yellow): info=null
+        if(info!=null){
+            console.log(info.yellow);
+            info=null;
+        } 
 
         console.log("===============================".green);
         console.log("    Aplicacion de Usuarios".green);
@@ -69,30 +84,43 @@ function menu(info){
         console.log("2. Listar Usuarios".green);
         console.log("3. Eliminar Usuario".green);
         console.log("4. Salir".green);
-        const option = readline.questionInt("Seleccione una opcion: ".yellow);
+        const option = readline.question("Seleccione una opcion: ".yellow);
 
         switch(option){
-            case 1:
+            case "1":
                 const name = readline.question("Ingrese el nombre del usuario: ".yellow);
                 if(!searchUser(name,pathUserData)){
                     const edad = readline.question("Ingrese la edad del usuario: ".yellow);
                     addUser(name, edad);
+                    info=`INFO: Agregado el usuario ${name}`.yellow
                 }else{
-                    info = "Ya existe un usuario con ese nombre";
+                    info = "INFO: Ya existe un usuario con ese nombre".red;
                 }
                 break;
-            case 2:
-                console.log("listar");
+            case "2":
+                console.clear();
+                console.log("===============================".green);
+                console.log("      Lista de Usuarios".green);
+                console.log("===============================".green);
+                listUsers(pathUserData);
+                readline.question("Pulsa cualquier tecla para continuar...".yellow);
                 break;
-            case 3:
-                console.log("eliminar");
+            case "3":
+                const namedel = readline.question("Ingrese el nombre del usuario: ".yellow);
+                if(!searchUser(namedel,pathUserData)){
+                    info = "INFO: No existe un usuario con ese nombre".red;
+                }else{
+                    deleteUser(namedel, pathUserData);
+                    info = `INFO: Eliminado el usuario ${namedel}`.yellow;
+                }
                 break;
-            case 4:
+            case "4":
                 console.log("Gracias por usar la app".green)
                 return false; //salir de la aplicación
             default:
-                console.log("Opción inválida".red);
+                info = "INFO: Opción inválida".red;
         }
+
     }while(true);
 }
 
