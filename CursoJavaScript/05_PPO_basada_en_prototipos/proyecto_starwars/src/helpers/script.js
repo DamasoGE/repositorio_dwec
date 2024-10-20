@@ -31,8 +31,24 @@ export const fetchDataCharacters = (path) => {
 
 
 /**
- * @description:
+ * @description: usando async await
  */
-export const fetchDataCharAsync = (path) => {
-    
-}
+export const fetchDataCharAsync = async (path) => {
+    const max=9;
+    let datos= new Array();
+    try{ //Es necesario puesto que no hay estructura .catch
+        for(let i=1; i<=max; i++){
+            const response = await fetch(`${path}${i}`);
+            if(!response.ok){
+                throw new Error("Error en la petición")
+            }
+            const datapi = await response.json();
+            datos[i] = datapi.results;
+        }
+        return datos;
+
+    } catch(error) {
+
+    }
+
+};
