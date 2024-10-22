@@ -18,7 +18,8 @@ console.clear();
 
 //----------------------DECLARACIÓN DE VARIABLES------------------------//
 
-const pathUserData = './data/usuarios.json';
+//const FILE_NAME_DATA = import.meta.env.FILE_NAME_DATA; no se puede importar de igual que en javascript
+const pathUserData="./data/usuarios.json";
 const info = null;
 
 //-----------------------DECLARACIÓN DE FUNCIONES-----------------------//
@@ -30,12 +31,18 @@ function addUser(username,edad){
 }
 
 function searchUser(findUser, path){
-    const user = loadDataJSON(path).filter((elem)=> elem.nombre==findUser);
-    return user.length > 0;
+    if(findUser!==""){
+        const user = loadDataJSON(path).filter((elem)=> elem.nombre==findUser);
+        return true;
+    }else return false;
+
 }
 
 function loadDataJSON(path){
     try{
+        if(!fs.existsSync(pathUserData)){
+            return []
+        }
         const data = fs.readFileSync(path,'utf8');
         return JSON.parse(data);
     }catch(error){
@@ -128,3 +135,4 @@ function menu(info){
 
 
 menu();
+

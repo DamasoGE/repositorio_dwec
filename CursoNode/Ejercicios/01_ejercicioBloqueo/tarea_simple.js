@@ -1,5 +1,0 @@
-console.log("Esto se ejecuta antes de la tarea programada")
-setTimeout(()=> console.log("Esto se ejecuta a los 5 segundos"),5000)
-setTimeout(()=> console.log("Esto se ejecuta a los 1 segundos"),10)
-setTimeout(()=> console.log("Esto se ejecuta a los 00 segundos"),0)
-console.log("Esto se ejecuta al final")
