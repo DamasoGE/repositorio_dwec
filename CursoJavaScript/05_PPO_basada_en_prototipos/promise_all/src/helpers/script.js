@@ -5,6 +5,30 @@
 export const VITE_API_URL = import.meta.env.VITE_API_URL;
 const VITE_IMG_URL = import.meta.env.VITE_IMG_URL;
 
+export async function fetchAllCharacterPromiseAll(){
+    try{
+        const promisePagesArray=[];
+        //suponemos que hay 9 paginas
+        for(let i = 1; i<=9; i++){
+            promisePagesArray.push(fetch(`${VITE_API_URL}?page=${path}${i}`)
+                .then((response)=>{
+                    if(!response.ok){
+                        throw new Error("No se pudo obtener la información")
+                    };
+                    return response.json();
+                })
+                .catch((error) => console.error("Error en la peticion",error)))
+        }
+        
+        const resultPromiseAll = await Promise.all(promisePagesArray);
+
+        console.log("Resultado de PromiseAll",resultPromiseAll);
+
+    }catch (error){
+        console.log("Error FetchAllCharacterPromiseAll", error)
+    }
+}
+
 //Crea dos funciones (promesa y async-away) que obtengan los personajes de la página de starwars (nombre, altura y la url imagen).
 
 /**
