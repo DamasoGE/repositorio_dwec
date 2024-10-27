@@ -76,44 +76,14 @@
   ],
   "historialPrecios": [
     {
-      "id": "64d3",
-      "productId": 1,
+      "productoId": 8,
       "precios": [
         23,
         26,
         21.75,
         19.99
-      ]
-    },
-    {
-      "id": "0ce1",
-      "productId": 1,
-      "precios": [
-        23,
-        26,
-        21.75,
-        19.99
-      ]
-    },
-    {
-      "id": "6492",
-      "productId": 1,
-      "precios": [
-        23,
-        26,
-        21.75,
-        19.99
-      ]
-    },
-    {
-      "id": "024d",
-      "productId": 1,
-      "precios": [
-        23,
-        26,
-        21.75,
-        19.99
-      ]
+      ],
+      "id": "49a6"
     }
   ]
 }
