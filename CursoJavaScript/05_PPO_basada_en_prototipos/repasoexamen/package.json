@@ -1,0 +1,19 @@
+{
+  "name": "prueba",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "jsonserver": "json-server --watch src/data/data.json --port 4000",
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}
