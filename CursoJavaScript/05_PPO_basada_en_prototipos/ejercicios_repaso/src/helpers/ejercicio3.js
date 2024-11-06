@@ -2,7 +2,7 @@ export const fetchMultipleResourcesPromises = (url,res1,res2,res3) => {
     const resArray = [`${url}/${res1}`,`${url}/${res2}`,`${url}/${res3}`];
     const promisesArray = resArray.map(url=>fetch(url));
     
-    Promise.allSettled(promisesArray)
+    return Promise.allSettled(promisesArray)
         .then((responses)=>{
             const results = responses.map((response)=>{
                 if(response.status=="fulfilled"){

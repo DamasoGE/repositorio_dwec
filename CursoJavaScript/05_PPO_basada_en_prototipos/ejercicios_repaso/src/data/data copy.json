@@ -13,32 +13,16 @@
       "stock": 20,
       "precio": 49.99,
       "categoriaId": 2
-    },
-    {
-      "id": "3",
-      "nombre": "ordenador",
-      "stock": 10,
-      "precio": 500,
-      "categoriaId": 5
     }
   ],
   "categorias": [
     {
       "id": "1",
-      "categoria": "Electrónica"
+      "nombre": "Electrónica"
     },
     {
       "id": "2",
       "categoria": "ropa"
-    },
-    {
-      "id": "3"
-    },
-    {
-      "id": "4"
-    },
-    {
-      "id": "5"
     }
   ],
   "comentarios": [
