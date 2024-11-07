@@ -1,6 +1,6 @@
 //---------------IMPORTACIONES-----------------//
 
-import { crearProducto, getProductos, modifyProductos } from "./helpers/crudbasico";
+import { addCategoria, addComment, crearProducto, eliminarProductos, getProductos, modifyProductos } from "./helpers/crudbasico";
 import { fetchUserDataAsync, fetchUserDataPromise, saveLocalStorage } from "./helpers/ejercicio1";
 import { fetchPostWithErrorAsync, fetchPostWithErrorPromise } from "./helpers/ejercicio2";
 import { fetchMultipleResourcesPromises } from "./helpers/ejercicio3";
@@ -33,7 +33,20 @@ const producto = {
 
 //EJERCICIO3: MODIFICAR PRODUCTOS //
 
-modifyProductos(urldata,3,"ordenador",10, 500, 5)
+//modifyProductos(urldata,3,"ordenador",10, 500, 5)
+
+//EJERCICIO4: ELIMINAR PRODUCTOS //
+
+//eliminarProductos(urldata, 4,5,6)
+
+//EJERCICIO5: OBTENER Y CREAR CATEGORÍAS
+
+//addCategoria(urldata,6);
+
+//EJERCICIO6: AÑADIR COMENTARIOS A PRODUCTOS
+
+//addComment(urldata,5,"pedro","muy rico","5")
+
 
 
 }else{
@@ -59,10 +72,14 @@ modifyProductos(urldata,3,"ordenador",10, 500, 5)
         const data = await fetchPostWithErrorAsync(url)
         console.log(data);
     }
-    init2(urlinvalida)
+    init2(urlinvalida);
+
     //--------------------EJERCICIO 3--------------//
 
-    fetchMultipleResourcesPromises(url,"users","posts","comments")
-        .then( data => console.log(data))
-        .catch((error)=> console.log("Error:", error));
+    const init3 = async (url) =>{
+        const data = await fetchMultipleResourcesPromises(url,"users","comments","posts");
+        console.log(data);
+    }
+    init3(url)
+
 }
