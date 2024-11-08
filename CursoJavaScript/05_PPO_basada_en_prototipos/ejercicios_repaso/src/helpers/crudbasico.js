@@ -183,3 +183,21 @@ export const addComment = async (url,productoId,usuario,contenido,calificacion)=
         console.log("Error: ",error);
     }
 }
+
+export const filterProducts = async (url, filter,operacion, num) => {
+    const productos = await getData(url, "Productos");
+
+    if(filter=="precio"){
+        if(operacion=="max"){
+
+        }else if(operacion=="min"){
+
+        }else if(operacion=="same"){
+            
+        }
+
+    }else if(filter=="stock"){
+
+
+    }
+}
