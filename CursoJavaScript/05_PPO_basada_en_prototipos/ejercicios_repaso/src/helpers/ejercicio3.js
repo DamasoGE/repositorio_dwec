@@ -5,12 +5,12 @@ export const fetchMultipleResourcesPromises = (url,res1,res2,res3) => {
     return Promise.allSettled(promisesArray)
         .then((responses)=>{
             const results = responses.map((response)=>{
-                if(response.status=="fulfilled"){
-                    return response.value.json();
-                }else{
-                    return Promise.reject(new Error(response.reason));
+                if(!response.status=="fulfilled"){
+                    throw new Error("Error en alguna promesa")
                 }
-            })
+                return response.value.json();
+                }
+            )
             return Promise.all(results);
         })
         .then(data =>{

@@ -42,7 +42,7 @@ export const crearProducto = async (url,producto) => {
         console.log("Error", error)
     }
 
-    addCategoriaIfNot(urldata, producto.categoriaId);
+    addCategoria(urldata, producto.categoriaId);
 
 }
 
@@ -85,14 +85,13 @@ export const modifyProductos = async(url, id, nombre, stock, precio, categoriaId
         console.log("Error", error)
     }
 
-    addCategoriaIfNot(urldata, categoriaId);
+    addCategoria(urldata, categoriaId);
 
 }
 
-
 export const eliminarProductos = (url,...id) =>{
 
-    allId=[...id];
+    const allId=[...id];
 
     const arrayPromesas = allId.map((id)=>{
         const response = fetch(`${url}/productos/${id}`,{
@@ -101,18 +100,19 @@ export const eliminarProductos = (url,...id) =>{
     })
 
     return Promise.allSettled(arrayPromesas)
-        .then((responses)=>{
-            const results = responses.map((response)=>{
-
-            })
+        .then((responses)=>{ responses.map((response)=>{
+            if(response.status!="fulfilled"){
+                throw new Error("Error al borrar los elementos")
+            }
+    
+        })
+   
         })
         .catch((error)=>console.log("Error: ", error))
 
-
 }
 
-
-export const addCategoriaIfNot= async (url,categoria)=>{
+export const addCategoria= async (url,categoria)=>{
     let isCategoria = false;
     const categorias = await getData(urldata, "categorias");
 
@@ -146,3 +146,58 @@ export const addCategoriaIfNot= async (url,categoria)=>{
     }
 }
 
+export const isElementCheck = async (url,endpoint,id)=>{
+    const data = await getData(url,endpoint);
+    return data.some((obj)=>obj.id==id)
+
+}
+
+export const addComment = async (url,productoId,usuario,contenido,calificacion)=>{
+    const comment = {
+        productoId: `${productoId}`,
+        usuario: `${usuario}`,
+        contenido: `${contenido}`,
+        calificacion: `${calificacion}`,
+    }
+
+    try {
+        const isElement = await isElementCheck(url,"productos",productoId);
+        if(await isElementCheck(url,"productos",productoId)){
+            const response = await fetch(`${url}/comentarios`,{
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(comment)
+            })
+
+            if(!response.ok){
+                throw new Error("No ha habido respuesta")
+            }
+        }else{
+            throw new Error("No existe el producto a comentar")
+        }
+
+
+    } catch (error) {
+        console.log("Error: ",error);
+    }
+}
+
+export const filterProducts = async (url, filter,operacion, num) => {
+    const productos = await getData(url, "Productos");
+
+    if(filter=="precio"){
+        if(operacion=="max"){
+
+        }else if(operacion=="min"){
+
+        }else if(operacion=="same"){
+            
+        }
+
+    }else if(filter=="stock"){
+
+
+    }
+}
