@@ -1,0 +1,3 @@
+    "dotenv": "16.4.5" -> para importar variables
+    "express": "4.21.1" -> para crear la api
+    "sqlite3": "5.1.7" -> base de datos
