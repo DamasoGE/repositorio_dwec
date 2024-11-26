@@ -1,4 +1,5 @@
 import express from 'express';
+import clientesRoutes from './Routes/clientesRoutes.js';
 
 import { PORT } from './Config/config.js'
 

@@ -5,8 +5,6 @@ const clientesRoutes =express.Router();
 
 //Todas las operaciones y rutas disponibles para los clientes
 
-// get:
-
 clientesRoutes.get("/", getClientesHandler);
 clientesRoutes.post("/", postClientesHandler);
 clientesRoutes.delete("/:id", deleteClientesHandler);
