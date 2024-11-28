@@ -1,7 +1,7 @@
 import db from "./database.js";
 
 
-export const createCliente = (nombre,email,callback)=>{
+export const createClient = (nombre,email,callback)=>{
     //inserción en la DB de un cliente
     const sql = `INSERT INTO cliente (nombre, email) VALUES (?,?)`;
     const params = [nombre, email];
@@ -10,7 +10,7 @@ export const createCliente = (nombre,email,callback)=>{
     });
 }
 
-export const getAllClientes = (callback) =>{
+export const getAllClient = (callback) =>{
     const sql = `SELECT * FROM cliente`;
     db.all(sql,[],function(err,rows){ //Cuando quieres afectar a muchas filas ALL
         callback(err,rows);
@@ -31,7 +31,7 @@ export const deleteClientById = (id, callback) =>{
     })
 }
 
-export const updateCliente = (id,nombre, email,callback) =>{
+export const updateClient = (id,nombre, email,callback) =>{
     const sql = `UPDATE cliente SET nombre=?,email=? WHERE id=?`;
     const params = [nombre, email, id];
     db.run(sql,params, function(err){
