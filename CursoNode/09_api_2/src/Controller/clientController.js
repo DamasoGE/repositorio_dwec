@@ -1,7 +1,20 @@
 import { getAllClient, getClientById, deleteClientById, updateClient, createClient } from "../Models/cliente.js"
 
-export const getClientHandler = (req,res) =>{
 
+//ESTO ES NODE
+
+export const getClientByIdHandler = (req,res) =>{
+    const { id } = req.params;
+
+    getClientById(id,(err,row)=>{
+        if(err){
+            res.status(500).json({error: err.message});
+        }else if(!row){
+            res.status(404).json({error: "Cliente no encontrado"});
+        }else{
+            res.status(200).json(row);
+        }
+    })
 }
 
 export const getAllClientHandler = (req,res) =>{
@@ -27,7 +40,17 @@ export const createClientHandler = (req,res)=>{
 }
 
 export const deleteClientHandler = (req,res)=>{
-
+    const { id } = req.params;
+    
+    deleteClientById(id, (err,result)=>{
+        if(err){
+            res.status(500).json({error: err.message});
+        }else if(result.changes==0){
+            res.status(404).json({error: "Cliente no encontrado"});
+        }else{
+            res.status(200).json(result);
+        }
+    });
 }
 
 export const postClientHandler = (req,res)=>{
